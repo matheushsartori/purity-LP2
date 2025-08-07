@@ -3,26 +3,30 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Clínica Purity - Mapeamento Biológico por Biorressonância | Teste de Parasitas, Toxinas e Deficiências Nutricionais",
-  description: "Descubra a causa real dos seus sintomas com o teste de biorressonância da Clínica Purity. Identifique parasitas ocultos, toxinas ambientais, alimentos incompatíveis e deficiências nutricionais. Mais de 5.000 casos de sucesso em Curitiba.",
+  title: {
+    default: "Clínica Purity - Teste de Biorressonância em Curitiba | Mapeamento Biológico Completo",
+    template: "%s | Clínica Purity"
+  },
+  description: "🔬 Teste de Biorressonância em Curitiba ✅ Identifique parasitas ocultos, toxinas, alimentos incompatíveis e deficiências nutricionais ⭐ +5.000 casos de sucesso 📍 Resultado em 7 dias 💯 Garantia",
   keywords: [
-    "clínica purity",
-    "biorressonância",
-    "mapeamento biológico",
-    "teste parasitas",
-    "toxinas ambientais",
-    "deficiências nutricionais",
-    "medicina integrativa",
+    "teste biorressonância curitiba",
+    "clínica purity curitiba", 
+    "mapeamento biológico curitiba",
+    "exame parasitas curitiba",
+    "medicina integrativa curitiba",
+    "teste toxinas metais pesados",
     "terreno biológico",
-    "sintomas inexplicáveis",
-    "curitiba",
-    "hulda clark",
-    "medicina preventiva",
-    "detoxificação",
-    "parasitas intestinais",
-    "metais pesados",
-    "alimentos incompatíveis",
-    "medicina funcional"
+    "sintomas sem explicação",
+    "medicina funcional curitiba",
+    "detoxificação curitiba",
+    "hulda clark brasil",
+    "parasitas intestinais teste",
+    "alimentos incompatíveis teste",
+    "deficiências nutricionais curitiba",
+    "medicina preventiva curitiba",
+    "biorressonância brasil",
+    "consultório medicina integrativa",
+    "exames alternativos curitiba"
   ],
   authors: [{ name: "Clínica Purity" }],
   creator: "Clínica Purity",
@@ -43,24 +47,38 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: "https://clinicapurity.com.br",
     siteName: "Clínica Purity",
-    title: "Clínica Purity - Mapeamento Biológico por Biorressonância",
-    description: "Descubra a causa real dos seus sintomas com o teste de biorressonância. Identifique parasitas, toxinas e deficiências nutricionais. Mais de 5.000 casos de sucesso.",
+    title: "🔬 Teste de Biorressonância em Curitiba | +5.000 Casos de Sucesso",
+    description: "✅ Identifique a CAUSA REAL dos seus sintomas! Parasitas ocultos, toxinas, alimentos incompatíveis. 📍 Curitiba ⭐ Resultado em 7 dias 💯 Garantia",
     images: [
       {
         url: "/images/clinica-purity-og.jpg",
         width: 1200,
         height: 630,
-        alt: "Clínica Purity - Medicina Integrativa e Biorressonância",
+        alt: "Clínica Purity - Teste de Biorressonância em Curitiba - Medicina Integrativa",
+        type: "image/jpeg",
       },
+      {
+        url: "/images/clinica-purity-logo.png", 
+        width: 400,
+        height: 400,
+        alt: "Logo Clínica Purity",
+        type: "image/png",
+      }
     ],
+    countryName: "Brasil",
+    region: "PR",
+    placeName: "Curitiba",
   },
   twitter: {
     card: "summary_large_image",
-    site: "@clinicapurity",
+    site: "@clinicapurity", 
     creator: "@clinicapurity",
-    title: "Clínica Purity - Mapeamento Biológico por Biorressonância",
-    description: "Descubra a causa real dos seus sintomas com teste de biorressonância. Mais de 5.000 casos de sucesso em Curitiba.",
-    images: ["/images/clinica-purity-twitter.jpg"],
+    title: "🔬 Teste de Biorressonância Curitiba | Clínica Purity",
+    description: "✅ Descubra a CAUSA dos seus sintomas! Parasitas, toxinas, deficiências. ⭐ +5.000 casos de sucesso 📍 Curitiba",
+    images: {
+      url: "/images/clinica-purity-twitter.jpg",
+      alt: "Clínica Purity - Teste de Biorressonância em Curitiba"
+    },
   },
   verification: {
     google: "your-google-site-verification-code",
@@ -69,9 +87,29 @@ export const metadata: Metadata = {
     },
   },
   category: "healthcare",
+  classification: "Medical Services",
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://clinicapurity.com.br"),
   alternates: {
     canonical: "https://clinicapurity.com.br",
+    languages: {
+      'pt-BR': 'https://clinicapurity.com.br',
+    },
   },
+  applicationName: "Clínica Purity",
+  appleWebApp: {
+    capable: true,
+    title: "Clínica Purity",
+    statusBarStyle: "default",
+  },
+  archives: ["https://clinicapurity.com.br/blog"],
+  bookmarks: ["https://clinicapurity.com.br/servicos"],
+  manifest: "/manifest.json",
 }
 
 export default function RootLayout({
@@ -83,11 +121,11 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "MedicalClinic",
+        "@type": ["MedicalClinic", "MedicalBusiness", "HealthAndBeautyBusiness"],
         "@id": "https://clinicapurity.com.br/#clinic",
         "name": "Clínica Purity",
-        "alternateName": "Clínica Purity de Nutrição Integrada",
-        "description": "Clínica especializada em medicina integrativa, biorressonância e mapeamento biológico para identificação de parasitas, toxinas e deficiências nutricionais.",
+        "alternateName": ["Clínica Purity de Nutrição Integrada", "Purity Clinic"],
+        "description": "Clínica especializada em medicina integrativa, biorressonância e mapeamento biológico para identificação de parasitas, toxinas e deficiências nutricionais em Curitiba.",
         "url": "https://clinicapurity.com.br",
         "telephone": "+55-41-99999-9999",
         "email": "contato@clinicapurity.com.br",
@@ -104,26 +142,55 @@ export default function RootLayout({
           "latitude": -25.4284,
           "longitude": -49.2733
         },
-        "openingHours": "Mo-Fr 08:00-18:00",
+        "openingHours": [
+          "Mo 08:00-18:00",
+          "Tu 08:00-18:00", 
+          "We 08:00-18:00",
+          "Th 08:00-18:00",
+          "Fr 08:00-18:00"
+        ],
         "priceRange": "$$",
+        "paymentAccepted": ["Credit Card", "Debit Card", "PIX", "Bank Transfer"],
+        "currenciesAccepted": "BRL",
         "medicalSpecialty": [
           "Medicina Integrativa",
-          "Nutrição Funcional",
-          "Medicina Preventiva"
+          "Nutrição Funcional", 
+          "Medicina Preventiva",
+          "Medicina Orthomolecular",
+          "Biorressonância"
         ],
+        "serviceArea": {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": -25.4284,
+            "longitude": -49.2733
+          },
+          "geoRadius": "50000"
+        },
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Serviços da Clínica Purity",
           "itemListElement": [
             {
               "@type": "Offer",
+              "name": "Mapeamento Biológico Completo",
               "itemOffered": {
                 "@type": "MedicalTest",
                 "name": "Mapeamento Biológico por Biorressonância",
-                "description": "Teste para identificação de parasitas, toxinas ambientais, alimentos incompatíveis e deficiências nutricionais através de amostra de urina"
+                "description": "Teste completo para identificação de parasitas ocultos, toxinas ambientais, metais pesados, alimentos incompatíveis e deficiências nutricionais através de análise por biorressonância",
+                "procedure": "Coleta de 10ml de urina em casa",
+                "result": "Relatório detalhado em 7 dias úteis"
               },
               "price": "997.00",
-              "priceCurrency": "BRL"
+              "priceCurrency": "BRL",
+              "availability": "https://schema.org/InStock",
+              "validFrom": "2024-01-01",
+              "priceValidUntil": "2024-12-31",
+              "warranty": "7 dias de garantia",
+              "seller": {
+                "@id": "https://clinicapurity.com.br/#clinic"
+              }
             }
           ]
         },
@@ -133,7 +200,32 @@ export default function RootLayout({
           "reviewCount": "156",
           "bestRating": "5",
           "worstRating": "1"
-        }
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "André Silva"
+            },
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "reviewBody": "15 anos de sofrimento resolvidos em 3 meses. Descobri parasitas e intolerâncias que nenhum médico havia identificado.",
+            "datePublished": "2024-01-15"
+          }
+        ],
+        "knowsAbout": [
+          "Biorressonância",
+          "Parasitas intestinais",
+          "Toxinas ambientais",
+          "Metais pesados",
+          "Deficiências nutricionais",
+          "Terreno biológico",
+          "Medicina integrativa"
+        ]
       },
       {
         "@type": "WebSite",
