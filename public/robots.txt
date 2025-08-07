@@ -1,0 +1,22 @@
+# Robots.txt para Clínica Purity
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://clinicapurity.com.br/sitemap.xml
+
+# Disallow admin pages (if any)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+
+# Allow important pages
+Allow: /
+Allow: /sobre
+Allow: /servicos
+Allow: /contato
+Allow: /depoimentos
+Allow: /blog
+
+# Crawl-delay for courtesy
+Crawl-delay: 1

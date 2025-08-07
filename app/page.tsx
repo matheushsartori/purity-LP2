@@ -2,29 +2,40 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { HeartPulse, Brain, TestTube, Microscope, Menu } from "lucide-react"
 import Image from "next/image"
+import UTMTracker from "@/components/utm-tracker"
+import SmartLink from "@/components/smart-link"
+import UTMDebug from "@/components/utm-debug"
+import { GTMEvents } from "@/components/gtm-events"
 
 const Header = () => (
-  <header className="z-50 bg-purity-dark text-purity-white shadow-md">
+  <header className="z-50 bg-purity-dark text-purity-white shadow-md" role="banner">
     <div className="container mx-auto flex items-center justify-between p-4">
-      <div className="text-xl font-bold tracking-wider">
-        CLÍNICA <span className="text-purity-gold">PURITY</span>
+      <div className="text-xl font-bold tracking-wider" itemScope itemType="https://schema.org/Organization">
+        <span itemProp="name">CLÍNICA <span className="text-purity-gold">PURITY</span></span>
       </div>
-      <nav className="hidden md:flex items-center space-x-6">
-        <a href="#solucao" className="hover:text-purity-gold transition-colors">
+      <nav className="hidden md:flex items-center space-x-6" role="navigation" aria-label="Menu principal">
+        <a href="#solucao" className="hover:text-purity-gold transition-colors" aria-label="Ir para seção sobre o teste">
           O Teste
         </a>
-        <a href="#depoimentos" className="hover:text-purity-gold transition-colors">
+        <a href="#depoimentos" className="hover:text-purity-gold transition-colors" aria-label="Ir para seção de depoimentos">
           Depoimentos
         </a>
-        <a href="#sobre" className="hover:text-purity-gold transition-colors">
+        <a href="#sobre" className="hover:text-purity-gold transition-colors" aria-label="Ir para seção sobre nós">
           Sobre Nós
         </a>
       </nav>
-      <Button className="hidden md:block bg-purity-gold text-purity-dark hover:bg-purity-gold/90 font-bold">
-        Agendar Consulta
+      <Button 
+        className="hidden md:block bg-purity-gold text-purity-dark hover:bg-purity-gold/90 font-bold" 
+        aria-label="Agendar consulta na Clínica Purity"
+        onClick={() => GTMEvents.trackCTAClick('Agendar Consulta', 'Header')}
+        asChild
+      >
+        <SmartLink href="https://pay.hotmart.com/S92891055P?checkoutMode=10">
+          Agendar Consulta
+        </SmartLink>
       </Button>
-      <Button variant="ghost" size="icon" className="md:hidden">
-        <Menu />
+      <Button variant="ghost" size="icon" className="md:hidden" aria-label="Abrir menu de navegação">
+        <Menu aria-hidden="true" />
       </Button>
     </div>
   </header>
@@ -122,9 +133,9 @@ export default function LandingPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="container mx-auto py-20 px-4 text-center">
+      <section className="container mx-auto py-20 px-4 text-center" role="main" aria-labelledby="hero-title">
         <div className="max-w-4xl mx-auto space-y-6">
-          <h1 className="font-['Playfair_Display',_serif] text-4xl md:text-6xl font-bold leading-tight">
+          <h1 id="hero-title" className="font-['Playfair_Display',_serif] text-4xl md:text-6xl font-bold leading-tight">
             Por que milhões de brasileiros estão morrendo lentamente sem saber por quê
           </h1>
           <p className="text-lg text-purity-green">
@@ -136,9 +147,9 @@ export default function LandingPage() {
       </section>
 
       {/* Symptoms Section */}
-      <section className="py-20 px-4 bg-purity-white">
+      <section className="py-20 px-4 bg-purity-white" aria-labelledby="symptoms-title">
         <div className="container mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-['Playfair_Display',_serif] font-bold mb-4">
+          <h2 id="symptoms-title" className="text-3xl md:text-4xl font-['Playfair_Display',_serif] font-bold mb-4">
             Se você chegou até aqui com alguns destes sintomas,
           </h2>
           <p className="text-lg text-purity-green mb-12">sem saber a solução ou a causa deles:</p>
@@ -216,10 +227,11 @@ export default function LandingPage() {
             <div className="border border-gray-200 rounded-lg p-6">
               <Image
                 src="/images/aquario-sujo.jpg"
-                alt="Aquário Sujo"
+                alt="Aquário com água suja e peixe doente representando terreno biológico intoxicado"
                 width={400}
                 height={250}
                 className="rounded-lg mx-auto mb-4"
+                priority
               />
               <h3 className="text-xl font-semibold mb-2">Se a água está suja, tóxica, cheia de parasitas...</h3>
               <div className="flex items-center justify-center text-lg font-semibold">
@@ -230,10 +242,11 @@ export default function LandingPage() {
             <div className="border border-gray-200 rounded-lg p-6">
               <Image
                 src="/images/aquario-limpo.jpg"
-                alt="Aquário Limpo"
+                alt="Aquário com água limpa e peixe saudável representando terreno biológico saudável"
                 width={400}
                 height={250}
                 className="rounded-lg mx-auto mb-4"
+                priority
               />
               <h3 className="text-xl font-semibold mb-2">Se a água está limpa, oxigenada, com pH correto..</h3>
               <div className="flex items-center justify-center text-lg font-semibold">
@@ -287,10 +300,11 @@ export default function LandingPage() {
               <CardHeader className="p-0">
                 <Image
                   src="/images/par.png"
-                  alt="Parasitas Ocultos"
+                  alt="Representação de parasitas ocultos no organismo - vermes, fungos, bactérias e vírus"
                   width={500}
                   height={500}
                   className="rounded-t-lg w-full object-cover filter grayscale"
+                  loading="lazy"
                 />
               </CardHeader>
               <CardContent className="p-6 flex-grow">
@@ -315,10 +329,11 @@ export default function LandingPage() {
               <CardHeader className="p-0">
                 <Image
                   src="/images/tox.png"
-                  alt="Toxinas Ambientais"
+                  alt="Toxinas ambientais e metais pesados - mercúrio, chumbo, alumínio e agrotóxicos"
                   width={500}
                   height={250}
                   className="rounded-t-lg w-full object-cover filter grayscale"
+                  loading="lazy"
                 />
               </CardHeader>
               <CardContent className="p-6 flex-grow">
@@ -343,10 +358,11 @@ export default function LandingPage() {
               <CardHeader className="p-0">
                 <Image
                   src="/images/ali.png"
-                  alt="Alimentos Incompatíveis"
+                  alt="Alimentos incompatíveis que causam inflamação intestinal e intolerâncias ocultas"
                   width={500}
                   height={250}
                   className="rounded-t-lg w-full object-cover filter"
+                  loading="lazy"
                 />
               </CardHeader>
               <CardContent className="p-6 flex-grow">
@@ -371,10 +387,11 @@ export default function LandingPage() {
               <CardHeader className="p-0">
                 <Image
                   src="/images/defi.png"
-                  alt="Deficiências Nutricionais"
+                  alt="Deficiências nutricionais - vitaminas e minerais em falta no organismo"
                   width={500}
                   height={250}
                   className="rounded-t-lg w-full object-cover filter"
+                  loading="lazy"
                 />
               </CardHeader>
               <CardContent className="p-6 flex-grow">
@@ -449,6 +466,18 @@ export default function LandingPage() {
           <p className="text-xl mt-8 text-purity-green">
             E existe apenas UMA forma de fazer isso com precisão celular...
           </p>
+          <div className="text-center mt-12">
+            <Button
+              size="lg"
+              className="bg-purity-gold text-purity-dark hover:bg-purity-gold/90 text-lg font-bold px-12 py-6"
+              onClick={() => GTMEvents.trackCTAClick('Descobrir Causa Sintomas', 'Pre-Solution')}
+              asChild
+            >
+              <SmartLink href="https://pay.hotmart.com/S92891055P?checkoutMode=10">
+                DESCOBRIR AGORA A CAUSA DOS MEUS SINTOMAS
+              </SmartLink>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -548,8 +577,12 @@ export default function LandingPage() {
               <Button
                 size="lg"
                 className="w-full bg-purity-gold text-purity-dark hover:bg-purity-gold/90 text-xl font-bold py-8"
+                onClick={() => GTMEvents.trackCTAClick('Fazer Mapeamento', 'Main-Offer')}
+                asChild
               >
-                SIM, QUERO FAZER O MAPEAMENTO!
+                <SmartLink href="https://pay.hotmart.com/S92891055P?checkoutMode=10">
+                  SIM, QUERO FAZER O MAPEAMENTO!
+                </SmartLink>
               </Button>
               <p className="text-center text-sm text-purity-green mt-4">Compra 100% segura. Garantia de 7 dias.</p>
             </CardContent>
@@ -618,15 +651,29 @@ export default function LandingPage() {
               </Card>
             ))}
           </div>
+          <div className="text-center mt-16">
+            <h3 className="text-2xl font-bold mb-6">Você também pode ter sua história de transformação!</h3>
+            <Button
+              size="lg"
+              className="bg-purity-gold text-purity-dark hover:bg-purity-gold/90 text-xl font-bold px-16 py-8"
+              onClick={() => GTMEvents.trackCTAClick('Mapeamento Biologico', 'Post-Testimonials')}
+              asChild
+            >
+              <SmartLink href="https://pay.hotmart.com/S92891055P?checkoutMode=10">
+                FAZER MEU MAPEAMENTO BIOLÓGICO AGORA
+              </SmartLink>
+            </Button>
+            <p className="text-sm text-purity-green mt-4">✅ Compra 100% segura • ✅ Garantia de 7 dias • ✅ Resultados em 7 dias úteis</p>
+          </div>
         </div>
       </section>
 
       {/* About Clinic Section */}
-      <section id="sobre" className="py-20 px-4">
+      <section id="sobre" className="py-20 px-4" aria-labelledby="about-title">
         <div className="container mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-left">
-              <h2 className="text-3xl md:text-4xl font-['Playfair_Display',_serif] font-bold">
+              <h2 id="about-title" className="text-3xl md:text-4xl font-['Playfair_Display',_serif] font-bold">
                 A Clínica Mais Experiente em Testes de Biorressonância do Brasil
               </h2>
               <div className="w-24 h-1 bg-purity-gold"></div>
@@ -645,10 +692,13 @@ export default function LandingPage() {
               </p>
             </div>
                          <div className="grid grid-cols-1 gap-4">
-               <img
+               <Image
                  src="/images/lair.jpeg"
-                 alt="Foto da Dra com Lair Ribeiro"
+                 alt="Foto da equipe da Clínica Purity com Dr. Lair Ribeiro, referência em medicina integrativa"
+                 width={400}
+                 height={400}
                  className="w-full aspect-square object-cover rounded-lg shadow-lg"
+                 loading="lazy"
                />
              </div>
           </div>
@@ -708,7 +758,7 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-purity-dark text-purity-light py-12 px-4">
+      <footer className="bg-purity-dark text-purity-light py-12 px-4" role="contentinfo">
         <div className="container mx-auto text-center">
           <h3 className="text-2xl font-bold mb-8">O QUE DIZEM SOBRE NÓS</h3>
           <div className="grid md:grid-cols-3 gap-6 mb-12 max-w-5xl mx-auto">
@@ -744,6 +794,8 @@ export default function LandingPage() {
           </p>
         </div>
       </footer>
+      <UTMTracker />
+      <UTMDebug />
     </div>
   )
 }
