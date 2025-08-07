@@ -6,6 +6,7 @@ import UTMTracker from "@/components/utm-tracker"
 import SmartLink from "@/components/smart-link"
 import UTMDebug from "@/components/utm-debug"
 import { GTMEvents } from "@/components/gtm-events"
+import CTAButton from "@/components/cta-button"
 
 const Header = () => (
   <header className="z-50 bg-purity-dark text-purity-white shadow-md" role="banner">
@@ -24,16 +25,15 @@ const Header = () => (
           Sobre Nós
         </a>
       </nav>
-      <Button 
+      <CTAButton 
         className="hidden md:block bg-purity-gold text-purity-dark hover:bg-purity-gold/90 font-bold" 
         aria-label="Agendar consulta na Clínica Purity"
-        onClick={() => GTMEvents.trackCTAClick('Agendar Consulta', 'Header')}
-        asChild
+        href="https://pay.hotmart.com/S92891055P?checkoutMode=10"
+        eventLabel="Agendar Consulta"
+        eventCategory="Header"
       >
-        <SmartLink href="https://pay.hotmart.com/S92891055P?checkoutMode=10">
-          Agendar Consulta
-        </SmartLink>
-      </Button>
+        Agendar Consulta
+      </CTAButton>
       <Button variant="ghost" size="icon" className="md:hidden" aria-label="Abrir menu de navegação">
         <Menu aria-hidden="true" />
       </Button>
@@ -467,16 +467,14 @@ export default function LandingPage() {
             E existe apenas UMA forma de fazer isso com precisão celular...
           </p>
           <div className="text-center mt-12">
-            <Button
-              size="lg"
+            <CTAButton
               className="bg-purity-gold text-purity-dark hover:bg-purity-gold/90 text-lg font-bold px-12 py-6"
-              onClick={() => GTMEvents.trackCTAClick('Descobrir Causa Sintomas', 'Pre-Solution')}
-              asChild
+              href="https://pay.hotmart.com/S92891055P?checkoutMode=10"
+              eventLabel="Descobrir Causa Sintomas"
+              eventCategory="Pre-Solution"
             >
-              <SmartLink href="https://pay.hotmart.com/S92891055P?checkoutMode=10">
-                DESCOBRIR AGORA A CAUSA DOS MEUS SINTOMAS
-              </SmartLink>
-            </Button>
+              DESCOBRIR AGORA A CAUSA DOS MEUS SINTOMAS
+            </CTAButton>
           </div>
         </div>
       </section>
@@ -574,16 +572,14 @@ export default function LandingPage() {
                 <p className="text-5xl font-bold text-purity-dark my-2">12x de R$ 99,70</p>
                 <p className="text-lg">ou R$ 997,00 à vista</p>
               </div>
-              <Button
-                size="lg"
+              <CTAButton
                 className="w-full bg-purity-gold text-purity-dark hover:bg-purity-gold/90 text-xl font-bold py-8"
-                onClick={() => GTMEvents.trackCTAClick('Fazer Mapeamento', 'Main-Offer')}
-                asChild
+                href="https://pay.hotmart.com/S92891055P?checkoutMode=10"
+                eventLabel="Fazer Mapeamento"
+                eventCategory="Main-Offer"
               >
-                <SmartLink href="https://pay.hotmart.com/S92891055P?checkoutMode=10">
-                  SIM, QUERO FAZER O MAPEAMENTO!
-                </SmartLink>
-              </Button>
+                SIM, QUERO FAZER O MAPEAMENTO!
+              </CTAButton>
               <p className="text-center text-sm text-purity-green mt-4">Compra 100% segura. Garantia de 7 dias.</p>
             </CardContent>
           </Card>
@@ -653,16 +649,14 @@ export default function LandingPage() {
           </div>
           <div className="text-center mt-16">
             <h3 className="text-2xl font-bold mb-6">Você também pode ter sua história de transformação!</h3>
-            <Button
-              size="lg"
+            <CTAButton
               className="bg-purity-gold text-purity-dark hover:bg-purity-gold/90 text-xl font-bold px-16 py-8"
-              onClick={() => GTMEvents.trackCTAClick('Mapeamento Biologico', 'Post-Testimonials')}
-              asChild
+              href="https://pay.hotmart.com/S92891055P?checkoutMode=10"
+              eventLabel="Mapeamento Biologico"
+              eventCategory="Post-Testimonials"
             >
-              <SmartLink href="https://pay.hotmart.com/S92891055P?checkoutMode=10">
-                FAZER MEU MAPEAMENTO BIOLÓGICO AGORA
-              </SmartLink>
-            </Button>
+              FAZER MEU MAPEAMENTO BIOLÓGICO AGORA
+            </CTAButton>
             <p className="text-sm text-purity-green mt-4">✅ Compra 100% segura • ✅ Garantia de 7 dias • ✅ Resultados em 7 dias úteis</p>
           </div>
         </div>
